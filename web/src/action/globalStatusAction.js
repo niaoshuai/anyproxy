@@ -1,5 +1,6 @@
 export const STOP_RECORDING = 'STOP_RECORDING';
 export const RESUME_RECORDING = 'RESUME_RECORDING';
+export const EXPORT_RECORD = 'EXPORT_RECORD';
 export const SHOW_FILTER = 'SHOW_FILTER';
 export const HIDE_FILTER = 'HIDE_FILTER';
 export const UPDATE_FILTER = 'UPDATE_FILTER';
@@ -41,6 +42,12 @@ export function stopRecording() {
 export function resumeRecording() {
   return {
     type: RESUME_RECORDING
+  };
+}
+
+export function exportRecord(){
+  return {
+    type: EXPORT_RECORD
   };
 }
 

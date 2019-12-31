@@ -18,6 +18,7 @@ import {
   toggleRemoteInterceptHttpsFlag,
   toggleRemoteGlobalProxyFlag,
   updateShouldClearRecord,
+  exportRecord,
   updateIsRootCAExists,
   showFilter,
   updateLocalAppVersion
@@ -45,6 +46,7 @@ class HeaderMenu extends React.Component {
     this.stopRecording = this.stopRecording.bind(this);
     this.resumeRecording = this.resumeRecording.bind(this);
     this.clearAllRecord = this.clearAllRecord.bind(this);
+    this.exportRecord = this.exportRecord.bind(this);
     this.initEvent = this.initEvent.bind(this);
     this.fetchData = this.fetchData.bind(this);
     this.togglerHttpsIntercept = this.togglerHttpsIntercept.bind(this);
@@ -57,7 +59,8 @@ class HeaderMenu extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func,
     globalStatus: PropTypes.object,
-    resumeRefreshFunc: PropTypes.func
+    resumeRefreshFunc: PropTypes.func,
+    exportFunc: PropTypes.func
   }
 
   stopRecording() {
@@ -72,6 +75,11 @@ class HeaderMenu extends React.Component {
   clearAllRecord() {
     this.props.dispatch(updateShouldClearRecord(true));
     this.props.resumeRefreshFunc && this.props.resumeRefreshFunc();
+  }
+
+  exportRecord() {
+    this.props.dispatch(exportRecord());
+    this.props.exportFunc && this.props.exportFunc();
   }
 
   handleRuningInfoVisibleChange(visible) {
@@ -252,6 +260,15 @@ class HeaderMenu extends React.Component {
           >
             <InlineSVG src={require('svg-inline-loader!assets/clear.svg')} />
             <span>Clear</span>
+          </a>
+          <a
+            className={Style.menuItem}
+            href="javascript:void(0)"
+            onClick={this.exportRecord}
+            title="Export"
+          >
+            <InlineSVG src={require('svg-inline-loader!assets/export.svg')} />
+            <span>Export</span>
           </a>
           {inAppMode ? filterMenu : null}
 

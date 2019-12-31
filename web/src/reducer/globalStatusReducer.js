@@ -26,6 +26,7 @@ import { MenuKeyMap } from 'common/Constant';
 import {
   STOP_RECORDING,
   RESUME_RECORDING,
+  EXPORT_RECORD,
   SHOW_FILTER,
   HIDE_FILTER,
   UPDATE_FILTER,
@@ -90,6 +91,12 @@ function requestListReducer(state = defaultStatus, action) {
     }
 
     case RESUME_RECORDING: {
+      const newState = Object.assign({}, state);
+      newState.recording = true;
+      return newState;
+    }
+
+    case EXPORT_RECORD: {
       const newState = Object.assign({}, state);
       newState.recording = true;
       return newState;

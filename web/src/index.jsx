@@ -47,6 +47,7 @@ class App extends React.Component {
     this.onRecordScroll = this.onRecordScroll.bind(this);
     this.stopRefresh = this.stopRefresh.bind(this);
     this.resumeFresh = this.resumeFresh.bind(this);
+    this.export = this.export.bind(this);
     this.detectIfToStopRefreshing = this.detectIfToStopRefreshing.bind(this);
     this.scrollHandler = this.scrollHandler.bind(this);
     this.initRecrodPanelWrapperRef = this.initRecrodPanelWrapperRef.bind(this);
@@ -81,6 +82,11 @@ class App extends React.Component {
     this.setState({
       refreshing: true
     });
+  }
+
+  export(){
+    console.log(this.props.requestRecord.recordList);
+    alert(this.props.requestRecord.recordList);
   }
 
   onResizePanelClose() {
@@ -262,7 +268,7 @@ class App extends React.Component {
         </div>
         <div className={Style.rightPanel} >
           <div className={Style.headerWrapper} >
-            <HeaderMenu resumeRefreshFunc={this.resumeFresh} />
+            <HeaderMenu resumeRefreshFunc={this.resumeFresh} exportFunc={this.export} />
           </div>
           <div
             className={Style.tableWrapper}
