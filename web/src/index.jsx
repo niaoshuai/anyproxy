@@ -85,8 +85,8 @@ class App extends React.Component {
   }
 
   export(){
-    console.log(this.props.requestRecord.recordList);
-    alert(this.props.requestRecord.recordList);
+    console.log(JSON.stringify(this.props.requestRecord.recordList));
+    alert(JSON.stringify(this.props.requestRecord.recordList));
   }
 
   onResizePanelClose() {
